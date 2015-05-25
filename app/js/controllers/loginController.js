@@ -1,4 +1,4 @@
-socialNetwork.controller("LoginController", ['$scope','userService', 'authentication', 'notyService',
+socialNetwork.controller("LoginController", ['$scope','userService', 'authentication',
     function ($scope, userService, authentication) {
     $scope.login = function (user) {
         if(user.username && user.password){

@@ -11,7 +11,7 @@ if(!sessionStorage["access_token"]){
                 redirectTo: "/"
             })
     });
-}else{
+} else {
     socialNetwork.config(function ($routeProvider) {
         $routeProvider
             .when('/', {
