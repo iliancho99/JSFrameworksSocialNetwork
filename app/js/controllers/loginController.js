@@ -6,15 +6,13 @@ socialNetwork.controller("LoginController", ['$scope','userService', 'authentica
                 .success(function (data) {
                     authentication.rememberUser(data);
                     alertify.success("You Logged in successfully");
-                    window.location.reload();
                     userService.getLoggedUserData()
                         .success(function (data) {
                             var gender = "Other";
-
                             if(data.gender == 1){
                                 gender = "Male"
-                            } else if(data.gender == 1) {
-                                gender = "Famale"
+                            } else if(data.gender == 2) {
+                                gender = "Female"
                             }
 
                             sessionStorage['username'] = data.username;
@@ -24,7 +22,7 @@ socialNetwork.controller("LoginController", ['$scope','userService', 'authentica
                             sessionStorage['id'] = data.id;
                             sessionStorage['email'] = data.email;
                             sessionStorage['gender'] = gender;
-                            sessionStorage['access_token'] = data.access_token;
+                            window.location.reload();
 
                         })
                         .error(function (data) {

@@ -15,7 +15,7 @@ if(!sessionStorage["access_token"]){
     socialNetwork.config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: "partials/welcome.html"
+                templateUrl: "partials/home.html"
             })
             .otherwise({
                 redirectTo: "/"

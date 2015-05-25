@@ -9,15 +9,16 @@ socialNetwork.factory('userService', ['$http', 'authentication','baseServiceUrl'
     }
 
     function GetLoggedUserData(){
+        var headers = authentication.getHeaders();
         return $http({
-            url: baseServiceUrl + 'users/me',
+            url: baseServiceUrl + 'me',
             method: 'GET',
-            headers: authentication.getHeaders
+            headers: headers
         });
     }
 
     return {
         login: LoginUser,
-        getLoggedUserData: GetLoggedUserData()
+        getLoggedUserData: GetLoggedUserData
     }
 }]);

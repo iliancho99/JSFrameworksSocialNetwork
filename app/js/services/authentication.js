@@ -9,7 +9,7 @@ socialNetwork.factory('authentication', [function(){
 
     function getHeaders(){
         var headers = {};
-        var userToken = $localStorage['access_token'];
+        var userToken = sessionStorage['access_token'];
         if(userToken){
             headers.Authorization = "Bearer " + userToken;
         }
