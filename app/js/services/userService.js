@@ -8,6 +8,15 @@ socialNetwork.factory('userService', ['$http', 'authentication','baseServiceUrl'
         });
     }
 
+    function EditProfile(user){
+        return $http({
+            url: baseServiceUrl + 'me',
+            method: 'PUT',
+            headers: authentication.getHeaders,
+            data: user
+        });
+    }
+
     function GetLoggedUserData(){
         var headers = authentication.getHeaders();
         return $http({
@@ -19,6 +28,7 @@ socialNetwork.factory('userService', ['$http', 'authentication','baseServiceUrl'
 
     return {
         login: LoginUser,
-        getLoggedUserData: GetLoggedUserData
+        getLoggedUserData: GetLoggedUserData,
+        editProfile: EditProfile
     }
 }]);

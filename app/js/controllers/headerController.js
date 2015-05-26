@@ -2,6 +2,10 @@ socialNetwork.controller('HeaderController', ['$scope','friendsService', 'userSe
     function ($scope, friendsService, userService) {
         var user = {};
 
+        $scope.requestDetails = function () {
+            $scope.requestDetailsShow = true;
+        };
+
         friendsService.getFriendRequests()
             .success(function (data) {
                user.friendRequests = data;

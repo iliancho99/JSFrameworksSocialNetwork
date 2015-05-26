@@ -17,6 +17,10 @@ if(!sessionStorage["access_token"]){
             .when('/', {
                 templateUrl: "partials/home.html"
             })
+            .when('/profile', {
+                templateUrl: "partials/editProfile.html",
+                controller: "EditUserController"
+            })
             .otherwise({
                 redirectTo: "/"
             })

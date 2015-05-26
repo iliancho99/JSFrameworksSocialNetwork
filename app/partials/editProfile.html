@@ -1,0 +1,62 @@
+<header></header>
+
+<form class="form-horizontal">
+    <fieldset>
+        <legend>Edit Profile</legend>
+
+        <div class="form-group">
+            <label for="inputProfileImageEdit" class="col-lg-2 control-label">Profile Image (max size 128kb):</label>
+            <div class="col-md-9">
+                <input class="form-control" id="inputProfileImageEdit" placeholder="Name" type="file" base-sixty-four-image="editUserData.profileImageData" ng-src="editUser.profileImageData">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputCoverImageEdit" class="col-lg-2 control-label">CoverImage(max size 1024kb):</label>
+            <div class="col-md-9">
+                <input class="form-control" id="inputCoverImageEdit" placeholder="Name" type="file" base-sixty-four-image="editUserData.profileImageData" ng-src="editUser.profileImageData">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputNameEdit" class="col-lg-2 control-label">Name:</label>
+            <div class="col-lg-10">
+                <input class="form-control" id="inputNameEdit" placeholder="{{user.name}}" type="text" ng-model="editUserData.name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmailEdit" class="col-lg-2 control-label">Email:</label>
+            <div class="col-lg-10">
+                <input class="form-control" placeholder="{{user.email}}" id="inputEmailEdit" type="text" ng-model="editUserData.email">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Gender:</label>
+            <div class="col-lg-8">
+
+                <div class="radio">
+                    <label>
+                        <input name="gender" id="male" value="male" type="radio" ng-model="editUserData.gender">
+                        Male
+                    </label>
+                    <label>
+                        <input name="gender" id="female" value="female" type="radio" ng-model="editUserData.gender">
+                        Female
+                    </label>
+                    <label>
+                        <input name="gender" id="other" value="other" checked="checked" type="radio" ng-model="editUserData.gender">
+                        Other
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="submit" class="btn btn-primary" ng-click="editUser(editUserData)">Edit</button>
+            </div>
+        </div>
+    </fieldset>
+</form>

@@ -8,7 +8,16 @@ socialNetwork.service('friendsService', ['$http', 'authentication','baseServiceU
             });
         }
 
+        function GetUserByName(name){
+            return $http({
+                url: baseServiceUrl + "users/search?searchTerm=" + name,
+                method: 'GET',
+                headers : authentication.getHeaders()
+            });
+        }
+
         return {
-            getFriendRequests : getUserRequests
+            getFriendRequests: getUserRequests,
+            getUsersByName: GetUserByName
         }
 }]);
