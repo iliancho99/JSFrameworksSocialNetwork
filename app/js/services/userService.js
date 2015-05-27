@@ -8,14 +8,26 @@ socialNetwork.factory('userService', ['$http', 'authentication','baseServiceUrl'
         });
     }
 
-    function EditProfile(user){
+    function RegisterUser(user){
         return $http({
-            url: baseServiceUrl + 'me',
-            method: 'PUT',
+            url: baseServiceUrl + 'users/Register',
+            method: 'POST',
             headers: authentication.getHeaders,
             data: user
         });
     }
+
+    function EditProfile(user){
+        var headers = authentication.getHeaders();
+        return $http({
+            url: baseServiceUrl + 'me',
+            method: 'PUT',
+            headers: headers,
+            data: user
+        });
+    }
+
+
 
     function GetLoggedUserData(){
         var headers = authentication.getHeaders();
@@ -28,6 +40,7 @@ socialNetwork.factory('userService', ['$http', 'authentication','baseServiceUrl'
 
     return {
         login: LoginUser,
+        register: RegisterUser,
         getLoggedUserData: GetLoggedUserData,
         editProfile: EditProfile
     }

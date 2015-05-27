@@ -1,33 +1,59 @@
 socialNetwork.controller("EditUserController", ['$scope','userService', '$location',
     function ($scope, userService, $location) {
-        $scope.editUser = function(editUser){
 
-            editUser.name = editUser.name | $scope.user.name;
-            editUser.email = editUser.email | $scope.user.email;
+        $scope.editUserData = {
+            'profileImageData': sessionStorage['profileImageData'],
+            'coverImageData': sessionStorage['coverImageData'],
+            'name': sessionStorage['name'],
+            'email': sessionStorage['email'],
+            'gender': sessionStorage['gender']
+        };
 
-            if(typeof editUser.profileImageData == "object"){
-                editUser.profileImageData = "data:image/jpg;base64," + editUser.profileImageData.base64;
+        $scope.changeCoverImageData = function(){
+            $scope.editUserData.coverImageData = "data:image/jpg;base64," + $scope.editUserData.coverImageData;
+        };
+
+        $scope.changeProfileImageData = function(){
+            $scope.editUserData.profileImageData = "data:image/jpg;base64," + $scope.editUserData.profileImageData;
+        };
+
+        $scope.editUser = function(userEditData){
+
+            var user = {};
+
+            if(userEditData.name == ''){
+                alertify.error('Name can\'t be empty!');
             }
+            else if(userEditData.email == ''){
+                alertify.error('Email can\'t be empty!');
+            } else{
 
-            if(typeof editUser.coverImageData == "object"){
-                editUser.coverImageData = "data:image/jpg;base64," + editUser.coverImageData.base64;
+                if(typeof userEditData.profileImageData == "object"){
+                    user.profileImageData = userEditData.profileImageData;
+                    sessionStorage['profileImageData'] = userEditData.profileImageData;
+                }
+
+                if(typeof userEditData.coverImageData == "object"){
+                    user.coverImageData = userEditData.coverImageData;
+                    sessionStorage['coverImageData'] = userEditData.coverImageData;
+                }
+
+                user.name = userEditData.name;
+                user.email = userEditData.email;
+                user.gender = userEditData.gender;
+
+                sessionStorage['name'] = userEditData.name;
+                sessionStorage['email'] = userEditData.email;
+                sessionStorage['gender'] = userEditData.gender;
+
+                userService.editProfile(user)
+                    .success(function (data) {
+                        alertify.success('Profile Edited Successfully!');
+                        $location.path('/')})
+                    .error(function(error){
+                        alertify.error('Profile Edit Failed! Try again!');
+                    });
             }
-
-            userService.editProfile(editUser)
-                .success(function (data) {
-                    alertify.success('Profile Edited Successfully!');
-                    $scope.user = editUser;
-
-                    $localStorage['profileImageData'] = editUser.profileImageData;
-                    $localStorage['coverImageData'] = editUser.coverImageData;
-                    $localStorage['name'] = editUser.name;
-                    $localStorage['email'] = editUser.email;
-                    $localStorage['gender'] = editUser.gender;
-                    $location.path('/');
-                })
-                .error(function(error){
-                    alertify.error('Profile Edit Failed! Try again!');
-                });
         }
     }
 ]);

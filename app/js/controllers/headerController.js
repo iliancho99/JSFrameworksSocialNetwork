@@ -21,15 +21,8 @@ socialNetwork.controller('HeaderController', ['$scope','friendsService', 'userSe
                 }
 
                 user.username = data.username;
-                if(data.profileImageData != null){
-                    user.profileImage = data.profileImageData;
-
-                }
-
-                if(data.coverImageData != null){
-                    user.coverImage = data.coverImageData;
-                }
-
+                user.profileImageData = data.profileImageData;
+                user.coverImageData = data.coverImageData;
                 user.name = data.name;
                 user.id = data.id;
                 user.email = data.email;

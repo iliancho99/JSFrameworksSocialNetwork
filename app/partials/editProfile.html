@@ -1,61 +1,64 @@
 <header></header>
 
-<form class="form-horizontal">
+<form class="form-horizohttp://localhost:63342/JSFrameworksSocialNetwork/app/partials/editProfile.htmlntal">
     <fieldset>
         <legend>Edit Profile</legend>
 
-        <div class="form-group">
-            <label for="inputProfileImageEdit" class="col-lg-2 control-label">Profile Image (max size 128kb):</label>
-            <div class="col-md-9">
-                <input class="form-control" id="inputProfileImageEdit" placeholder="Name" type="file" base-sixty-four-image="editUserData.profileImageData" ng-src="editUser.profileImageData">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="inputCoverImageEdit" class="col-lg-2 control-label">CoverImage(max size 1024kb):</label>
-            <div class="col-md-9">
-                <input class="form-control" id="inputCoverImageEdit" placeholder="Name" type="file" base-sixty-four-image="editUserData.profileImageData" ng-src="editUser.profileImageData">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="inputNameEdit" class="col-lg-2 control-label">Name:</label>
-            <div class="col-lg-10">
-                <input class="form-control" id="inputNameEdit" placeholder="{{user.name}}" type="text" ng-model="editUserData.name">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="inputEmailEdit" class="col-lg-2 control-label">Email:</label>
-            <div class="col-lg-10">
-                <input class="form-control" placeholder="{{user.email}}" id="inputEmailEdit" type="text" ng-model="editUserData.email">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-lg-2 control-label">Gender:</label>
-            <div class="col-lg-8">
-
-                <div class="radio">
-                    <label>
-                        <input name="gender" id="male" value="male" type="radio" ng-model="editUserData.gender">
-                        Male
-                    </label>
-                    <label>
-                        <input name="gender" id="female" value="female" type="radio" ng-model="editUserData.gender">
-                        Female
-                    </label>
-                    <label>
-                        <input name="gender" id="other" value="other" checked="checked" type="radio" ng-model="editUserData.gender">
-                        Other
-                    </label>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-lg-10 col-lg-offset-2">
-                <button type="submit" class="btn btn-primary" ng-click="editUser(editUserData)">Edit</button>
+        <div class="container">
+            <div class="col-sm-offset-1 col-md-10">
+                <form class="form-horizontal row">
+                    <fieldset class="col-md-6">
+                        <div class="col-md-9 upload-picture">
+                            <img class="img-thumbnail img-responsive" ng-src="{{editUserData.profileImageData}}"  alt="{{editUserData.name}}"/>
+                            <p>Allowed format: .jpg</p>
+                            <p>Limit: 128 kb</p>
+                            <input class="btn btn-primary" ng-model="editUserData.profileImageData" base-sixty-four-input id="inputProfileImageData"onchange="angular.element(this).scope().changeCoverImageData(this)" type="file">
+                        </div>
+                    </fieldset>
+                    <fieldset class="col-md-6">
+                        <div class="form-group">
+                            <label for="inputName" class="col-lg-2 control-label">Name</label>
+                            <div class="col-lg-10">
+                                <input class="form-control" id="inputName" placeholder="{{editUserData.name}}" type="text" ng-model="editUserData.name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                            <div class="col-lg-10">
+                                <input class="form-control" id="inputEmail" placeholder="{{editUserData.email}}" type="text" ng-model="editUserData.email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Gender</label>
+                            <div class="col-lg-10">
+                                <div class="radio">
+                                    <label>
+                                        <input name="gender" id="male" value="male" type="radio" ng-model="editUserData.gender">
+                                        Male
+                                    </label>
+                                    <label>
+                                        <input name="gender" id="female" value="female" type="radio" ng-model="editUserData.gender">
+                                        Female
+                                    </label>
+                                    <label>
+                                        <input name="gender" id="other" value="other" checked="" type="radio" ng-model="editUserData.gender">
+                                        Other
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12 upload-cover">
+                            <img class="img-thumbnail img-responsive" ng-src="{{editUserData.coverImageData}}" base-sixty-four-image="editUserData.coverImageData" alt="{{editUserData.name}}"/>
+                            <input type="file" class="btn btn-primary col-lg-8" ng-model="{{editUserData.coverImageData}}" base-sixty-four-input id="inputCoverImageData" onchange="angular.element(this).scope().changeProfileImageData(this)" type="file" accept="image/*" >
+                            <p class=" col-lg-4">Limit: 1024 kb</p>
+                        </div>
+                    </fieldset>
+                    <div class="form-group pull-right">
+                        <div class="col-lg-2 col-lg-offset-4">
+                            <button type="submit" class="btn btn-primary" ng-click="editUser(editUserData)">Save Changes</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </fieldset>

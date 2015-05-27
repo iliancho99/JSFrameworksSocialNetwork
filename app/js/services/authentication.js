@@ -1,15 +1,15 @@
 socialNetwork.factory('authentication', [function(){
     function saveUserData(data){
-        localStorage['access_token'] = data.access_token;
+        localStorage.access_token = data.access_token;
     }
 
     function saveUserDataInSession(data){
-        sessionStorage['access_token'] = data.access_token;
+        sessionStorage.access_token = data.access_token;
     }
 
     function getHeaders(){
         var headers = {};
-        var userToken = sessionStorage['access_token'];
+        var userToken = sessionStorage.access_token;
         if(userToken){
             headers.Authorization = "Bearer " + userToken;
         }

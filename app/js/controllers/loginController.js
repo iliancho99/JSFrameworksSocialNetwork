@@ -22,8 +22,8 @@ socialNetwork.controller("LoginController", ['$scope','userService', 'authentica
                             sessionStorage['id'] = data.id;
                             sessionStorage['email'] = data.email;
                             sessionStorage['gender'] = gender;
+                            sessionStorage['genderNum'] = data.gender;
                             window.location.reload();
-
                         })
                         .error(function (data) {
                             alertify.error(data.error_description);
