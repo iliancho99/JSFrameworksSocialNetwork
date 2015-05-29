@@ -10,11 +10,13 @@ socialNetwork.controller("EditUserController", ['$scope','userService', '$locati
         };
 
         $scope.changeCoverImageData = function(){
-            $scope.editUserData.coverImageData = "data:image/jpg;base64," + $scope.editUserData.coverImageData;
+            //console.log($scope.editUserData.coverImageData.base64);
+            $scope.editUserData.coverImageData = "data:image/jpg;base64, " + $scope.editUserData.coverImageData.base64;
         };
 
         $scope.changeProfileImageData = function(){
-            $scope.editUserData.profileImageData = "data:image/jpg;base64," + $scope.editUserData.profileImageData;
+            //console.log($scope.editUserData.profileImageData.base64);
+            $scope.editUserData.profileImageData = "data:image/jpg;base64, " + $scope.editUserData.profileImageData.base64;
         };
 
         $scope.editUser = function(userEditData){
@@ -28,12 +30,12 @@ socialNetwork.controller("EditUserController", ['$scope','userService', '$locati
                 alertify.error('Email can\'t be empty!');
             } else{
 
-                if(typeof userEditData.profileImageData == "object"){
+                if(userEditData.profileImageData){
                     user.profileImageData = userEditData.profileImageData;
                     sessionStorage['profileImageData'] = userEditData.profileImageData;
                 }
 
-                if(typeof userEditData.coverImageData == "object"){
+                if(userEditData.coverImageData){
                     user.coverImageData = userEditData.coverImageData;
                     sessionStorage['coverImageData'] = userEditData.coverImageData;
                 }

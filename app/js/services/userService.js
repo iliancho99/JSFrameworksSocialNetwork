@@ -8,6 +8,15 @@ socialNetwork.factory('userService', ['$http', 'authentication','baseServiceUrl'
         });
     }
 
+    function LogoutUser(){
+        var headers = authentication.getHeaders();
+        return $http({
+            url: baseServiceUrl + 'users/Logout',
+            method: 'POST',
+            headers: headers
+        });
+    }
+
     function RegisterUser(user){
         return $http({
             url: baseServiceUrl + 'users/Register',
@@ -27,6 +36,16 @@ socialNetwork.factory('userService', ['$http', 'authentication','baseServiceUrl'
         });
     }
 
+    function ChangePassword(passwordData){
+        var headers = authentication.getHeaders();
+        return $http({
+            url: baseServiceUrl + 'me/ChangePassword',
+            method: 'PUT',
+            headers: headers,
+            data: passwordData
+        });
+    }
+
 
 
     function GetLoggedUserData(){
@@ -42,6 +61,8 @@ socialNetwork.factory('userService', ['$http', 'authentication','baseServiceUrl'
         login: LoginUser,
         register: RegisterUser,
         getLoggedUserData: GetLoggedUserData,
-        editProfile: EditProfile
+        editProfile: EditProfile,
+        logout: LogoutUser,
+        changePassword: ChangePassword
     }
 }]);

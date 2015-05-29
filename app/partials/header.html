@@ -18,17 +18,17 @@
                 <li><a href="#/profile/password"><span class="glyphicon glyphicon-edit"></span>Change Password</a></li>
             </ul>
             <form class="navbar-form navbar-right" role="search">
-                <div class="form-group">
-                    <input class="form-control" data-toggle="dropdown" placeholder="Search" type="text" ng-model="searchUserName" ng-change="searchUsersByName(searchUserName)">
+                <div class="form-group dropdown">
+                    <input class="form-control dropdown-toggle" data-toggle="dropdown" aria-expanded="false"  placeholder="Search" type="text" ng-model="searchName" ng-change="getUsersByName(searchName)">
                     <ul class="dropdown-menu" ng-if="searchUserDropDownShown">
-                        <li ng-repeat="userResult in searchUserResults">
-                            <a href="#/users/{{userResult.username}}" data-toggle="tab">
-                                <img src="" ng-src="{{userResult.profileImageData}}" alt="{{userResult.name}}">
-                                <p class="pull-right">{{userResult.name}}</p>
+                        <li ng-repeat="result in searchUserResults">
+                            <a href="#/users/{{result.username}}" data-toggle="tab">
+                                <img src="" ng-src="{{result.profileImageData}}" alt="{{result.name}}">
+                                <p class="pull-right">{{result.name}}</p>
                             </a>
                         </li>
                         <li>
-                            <p>{{searchUserResults.length}} result user total</p>
+                            <p>{{searchUserResults.length}} result total</p>
                         </li>
                     </ul>
                 </div>
@@ -36,6 +36,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li ng-class="{ active: isActive('/logout')}"><a href="#/logout"><span class="glyphicon glyphicon-off"></span>Log out</a></li>
             </ul>
+
         </div>
     </div>
 
