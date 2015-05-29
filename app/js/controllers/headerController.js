@@ -31,7 +31,7 @@ socialNetwork.controller('HeaderController', ['$scope','friendsService', 'userSe
                 $scope.user = user;
             })
             .error(function (data) {
-                alertify.error(data.error_description);
+                n(data.error_description);
             });
 
 }]);

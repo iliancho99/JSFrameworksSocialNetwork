@@ -1,11 +1,10 @@
-socialNetwork.controller("LoginController", ['$scope','userService', 'authentication',
-    function ($scope, userService, authentication) {
+socialNetwork.controller("LoginController", ['$scope','userService', 'authentication', 'notifyService',
+    function ($scope, userService, authentication, notifyService) {
     $scope.login = function (user) {
         if(user.username && user.password){
             userService.login(user)
                 .success(function (data) {
                     authentication.rememberUser(data);
-                    alertify.success("You Logged in successfully");
                     userService.getLoggedUserData()
                         .success(function (data) {
                             var gender = "Other";
@@ -26,12 +25,12 @@ socialNetwork.controller("LoginController", ['$scope','userService', 'authentica
                             window.location.reload();
                         })
                         .error(function (data) {
-                            alertify.error(data.error_description);
+                            notifyService.showError(data.error_description);
                         });
                 })
                 .error(
                 function (data) {
-                    alertify.error(data.error_description);
+                    notifyService.showError(data.error_description);
                 }
             );
         }
