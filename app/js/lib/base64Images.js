@@ -29,7 +29,6 @@ angular.module('base64Images', [])
                     reader.readAsArrayBuffer(file);
                 });
 
-                //http://stackoverflow.com/questions/9267899/arraybuffer-to-base64-encoded-string
                 function _arrayBufferToBase64( buffer ) {
                     var binary = '';
                     var bytes = new Uint8Array( buffer );

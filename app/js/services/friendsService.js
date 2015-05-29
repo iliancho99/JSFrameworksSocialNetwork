@@ -19,8 +19,28 @@ socialNetwork.service('friendsService', ['$http', 'authentication','baseServiceU
             });
         }
 
+        function ApproveRequest(id){
+            var headers = authentication.getHeaders();
+            return $http({
+                url: baseServiceUrl + "me/requests/" + id+ "?status=approved",
+                method: 'PUT',
+                headers : headers
+            });
+        }
+
+        function RejectRequest(id){
+            var headers = authentication.getHeaders();
+            return $http({
+                url: baseServiceUrl + "me/requests/" + id+ "?status=delete",
+                method: 'PUT',
+                headers : headers
+            });
+        }
+
         return {
             getFriendRequests: getUserRequests,
-            getUsersByName: GetUserByName
+            getUsersByName: GetUserByName,
+            RejectRequest: RejectRequest,
+            ApproveRequest: ApproveRequest
         }
 }]);

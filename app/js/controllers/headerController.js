@@ -2,7 +2,7 @@ socialNetwork.controller('HeaderController', ['$scope','friendsService', 'userSe
     function ($scope, friendsService, userService) {
         var user = {};
 
-        $scope.requestDetails = function () {
+        $scope.showRequestDetails = function () {
             $scope.requestDetailsShow = true;
         };
 
@@ -31,7 +31,7 @@ socialNetwork.controller('HeaderController', ['$scope','friendsService', 'userSe
                 $scope.user = user;
             })
             .error(function (data) {
-                n(data.error_description);
+
             });
 
 }]);
