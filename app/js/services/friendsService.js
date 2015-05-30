@@ -31,7 +31,7 @@ socialNetwork.service('friendsService', ['$http', 'authentication','baseServiceU
         function RejectRequest(id){
             var headers = authentication.getHeaders();
             return $http({
-                url: baseServiceUrl + "me/requests/" + id+ "?status=delete",
+                url: baseServiceUrl + "me/requests/" + id+ "?status=rejected",
                 method: 'PUT',
                 headers : headers
             });

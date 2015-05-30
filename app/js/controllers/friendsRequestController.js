@@ -4,6 +4,10 @@ socialNetwork.controller("friendsRequestController", ['$scope','friendsService',
             friendsService.RejectRequest(id)
                 .success(function (data) {
                     notifyService.showInfo("You approved reject successfully!")
+                    friendsService.getFriendRequests()
+                        .success(function (data) {
+                            user.friendRequests = data;
+                        });
                 })
                 .error(function (data) {
                     notifyService.showError(data.error_description);
@@ -14,6 +18,10 @@ socialNetwork.controller("friendsRequestController", ['$scope','friendsService',
             friendsService.RejectRequest(id)
                 .success(function (data) {
                     notifyService.showInfo("You approved reject successfully!")
+                    friendsService.getFriendRequests()
+                        .success(function (data) {
+                            user.friendRequests = data;
+                        });
                 })
                 .error(function (data) {
                     notifyService.showError(data.error_description);

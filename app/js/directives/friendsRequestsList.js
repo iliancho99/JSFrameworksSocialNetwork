@@ -1,6 +1,6 @@
 socialNetwork.directive("requests", function () {
     return {
-        controller: 'HeaderController',
+        controller: 'friendsRequestController',
         restrict: "EA",
         templateUrl: 'partials/friendsRequestsList.html',
         replace: true

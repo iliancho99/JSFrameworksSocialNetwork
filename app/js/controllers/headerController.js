@@ -5,6 +5,9 @@ socialNetwork.controller('HeaderController', ['$scope','friendsService', 'userSe
         $scope.showRequestDetails = function () {
             $scope.requestDetailsShow = true;
         };
+        $scope.closeRequestDetails = function () {
+            $scope.requestDetailsShow = false;
+        };
 
         friendsService.getFriendRequests()
             .success(function (data) {
