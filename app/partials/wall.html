@@ -1,0 +1,37 @@
+<header></header>
+<section>
+    <div class="wallHeader">
+        <div class="UserWallInfo">
+            <img class="profileImage" ng-src="{{userWall.profileImageData}}" alt="profileImage">
+            <div>
+                <h3>{{userWall.name}}</h3>
+                <button type="button" class="btn btn-primary btn-lg" ng-if="!hasStatus" ng-hide="isLoggedUser">{{userStatus}}</button>
+                <button type="button" class="btn btn-primary btn-lg" ng-click="sendRequestUser(wallData.username)" ng-if="hasStatus" ng-hide="isLoggedUser">{{userStatus}}</button>
+            </div>
+        </div>
+        <img class="coverImage" ng-src="{{userWall.coverImageData}}" alt="Cover Image">
+    </div>
+    <div class="container">
+        <div class="col-md-7">
+        </div>
+        <div class="col-sm-offset-1 col-md-4" ng-if="sidebarVisible">
+            <div class="sendMessage" ng-controller="newsFeedController">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <legent>Add Post</legent>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <textarea class="form-control" rows="3" id="textArea" ng-model="postText"></textarea>
+                            </div>
+                            <div class="col-md-10">
+                                <img ng-src="{{user.profileImageData}}" alt="{{user.name}}">
+                                <p> as <strong>{{user.name}}</strong></p>
+                                <button type="button" class="btn btn-primary" ng-click="addPost(postText)">Add Post</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

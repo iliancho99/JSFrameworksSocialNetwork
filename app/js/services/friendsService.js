@@ -37,10 +37,40 @@ socialNetwork.service('friendsService', ['$http', 'authentication','baseServiceU
             });
         }
 
+        function GetMyFriends(){
+            var headers = authentication.getHeaders();
+            return $http({
+                url: baseServiceUrl + "/me/friends",
+                method: 'GET',
+                headers : headers
+            });
+        }
+
+        function GetUserFriends(user){
+            var headers = authentication.getHeaders();
+            return $http({
+                url: baseServiceUrl + 'users/' + user + '/friends',
+                method: 'PUT',
+                headers : headers
+            });
+        }
+
+        function getUserFullData(user){
+            var headers = authentication.getHeaders();
+            return $http({
+                url: baseServiceUrl + 'users/' + user,
+                method: 'GET',
+                headers : headers
+            });
+        }
+
         return {
             getFriendRequests: getUserRequests,
             getUsersByName: GetUserByName,
             RejectRequest: RejectRequest,
-            ApproveRequest: ApproveRequest
+            ApproveRequest: ApproveRequest,
+            GetMyFriends: GetMyFriends,
+            GetUserFriends: GetUserFriends,
+            getUserFullData: getUserFullData
         }
 }]);

@@ -60,3 +60,72 @@
     padding-top: 5px;
     padding-bottom: 5px;
 }
+
+.friends-sidebar{
+    padding: 10px 25px;
+}
+
+.friends-sidebar>p{
+    margin-bottom: 20px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.friends-sidebar img{
+    width: 100%;
+    max-height: 90px;
+}
+
+.friends-sidebar>div>div>a>p{
+    font-size: 18px;
+    text-align: center;
+    color: black;
+}
+
+.friends-sidebar>div>div {
+    height:150px;
+}
+
+.wallHeader .coverImage{
+    width:100%;
+    height:200px;
+    overflow: hidden;
+    object-fit: cover;
+}
+.wallHeader .UserWallInfo{
+    width: 600px;
+    position: absolute;
+    left: 150px;
+    top: 45px;
+}
+
+.profileImage{
+    width: 200px;
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+
+.sendMessage textarea{
+    max-width: 100%;
+    max-height: 200px;
+    margin-bottom: 10px;
+}
+
+.sendMessage img{
+    width: 40px;
+    height: 40px;
+    float:left;
+}
+
+.sendMessage p{
+    float:left;
+    line-height: 40px;
+    margin-left: 10px;
+}
+
+.sendMessage button{
+    margin-top:3px;
+    float:right;
+}
+.sendMessage{
+    margin-top: 20px;
+}

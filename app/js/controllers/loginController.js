@@ -1,5 +1,5 @@
-socialNetwork.controller("LoginController", ['$scope','userService', 'authentication', 'notifyService',
-    function ($scope, userService, authentication, notifyService) {
+socialNetwork.controller("LoginController", ['$scope','userService', 'authentication', 'notifyService', 'baseCoverImage', 'baseProfileImage',
+    function ($scope, userService, authentication, notifyService, baseCoverImage, baseProfileImage) {
     $scope.login = function (user) {
         if(user.username && user.password){
             userService.login(user)
@@ -15,7 +15,19 @@ socialNetwork.controller("LoginController", ['$scope','userService', 'authentica
                             }
 
                             sessionStorage['username'] = data.username;
-                            sessionStorage['profileImageData'] = data.profileImageData;
+
+                            if(!data.profileImageData){
+                                sessionStorage['profileImageData'] = baseProfileImage;
+                            } else {
+                                sessionStorage['profileImageData'] = data.profileImageData;
+                            }
+
+                            if(!data.coverImageData){
+                                sessionStorage['coverImageData'] = baseCoverImage;
+                            } else {
+                                sessionStorage['coverImageData'] = data.coverImageData;
+                            }
+
                             sessionStorage['coverImageData'] = data.coverImageData;
                             sessionStorage['name'] = data.name;
                             sessionStorage['id'] = data.id;
