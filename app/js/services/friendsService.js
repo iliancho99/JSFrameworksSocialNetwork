@@ -1,6 +1,6 @@
 socialNetwork.service('friendsService', ['$http', 'authentication','baseServiceUrl',
     function ($http, authentication, baseServiceUrl) {
-        function getUserRequests(){
+        function GetUserRequests(){
             var headers = authentication.getHeaders();
 
             return $http({
@@ -50,12 +50,12 @@ socialNetwork.service('friendsService', ['$http', 'authentication','baseServiceU
             var headers = authentication.getHeaders();
             return $http({
                 url: baseServiceUrl + 'users/' + user + '/friends',
-                method: 'PUT',
+                method: 'GET',
                 headers : headers
             });
         }
 
-        function getUserFullData(user){
+        function GetUserFullData(user){
             var headers = authentication.getHeaders();
             return $http({
                 url: baseServiceUrl + 'users/' + user,
@@ -64,13 +64,25 @@ socialNetwork.service('friendsService', ['$http', 'authentication','baseServiceU
             });
         }
 
+        function SendRequest(username){
+            var headers = authentication.getHeaders();
+            return $http({
+                url: baseServiceUrl + 'me/requests/' + username,
+                method: 'POST',
+                headers : headers
+            });
+        }
+
+
+
         return {
-            getFriendRequests: getUserRequests,
+            getFriendRequests: GetUserRequests,
             getUsersByName: GetUserByName,
             RejectRequest: RejectRequest,
             ApproveRequest: ApproveRequest,
             GetMyFriends: GetMyFriends,
             GetUserFriends: GetUserFriends,
-            getUserFullData: getUserFullData
+            getUserFullData: GetUserFullData,
+            SendRequest: SendRequest
         }
 }]);

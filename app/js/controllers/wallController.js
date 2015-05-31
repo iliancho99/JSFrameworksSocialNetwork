@@ -1,6 +1,6 @@
 socialNetwork.controller("wallController", ['$scope','userService', 'friendsService', 'notifyService',
-        '$routeParams', 'baseCoverImage', 'baseProfileImage',
-    function ($scope, userService, friendsService, notifyService, $routeParams, baseCoverImage, baseProfileImage) {
+        '$routeParams', 'baseCoverImage', 'baseProfileImage', 'postService',
+    function ($scope, userService, friendsService, notifyService, $routeParams, baseCoverImage, baseProfileImage, postService) {
         $scope.isLoggedUser = true;
         $scope.userWall = {};
         $scope.hasStatus = true;
@@ -31,11 +31,11 @@ socialNetwork.controller("wallController", ['$scope','userService', 'friendsServ
                     }
 
                     if(!data.coverImageData){
-                        data.coverImageData = baseCoverImage;
+                        data.coverImageData = "data:image/jpg;base64," +  baseCoverImage;
                     }
 
                     if(!data.profileImageData){
-                        data.profileImageData = baseProfileImage;
+                        data.profileImageData = "data:image/jpg;base64," +  baseProfileImage;
                     }
 
                     $scope.userWall = data;
@@ -45,11 +45,30 @@ socialNetwork.controller("wallController", ['$scope','userService', 'friendsServ
                 });
         
         $scope.sendRequestUser = function (username) {
-            
+            if($scope.userStatus == 'Invite'){
+                friendsService.SendRequest(username)
+                    .success(function (data) {
+                        notifyService.showInfo("You sent friend request successfully");
+                    })
+                    .error(function (data) {
+                        notifyService.showError(data.error_description);
+                    });
+            }
         };
         
         $scope.addPost = function (text) {
-            
+            if(text == ''){
+                notifyService.showError("The text can not be empty")
+            }
+            postService.AddPost(text, $scope.userWall.username)
+                .success(function (data) {
+                    notifyService.showInfo("The post posted successfully")
+                    $scope.newsFeedUserData.ushift(data);
+                })
+                .error(function (data) {
+                    notifyService.showError(data.error_description);
+                });
         }
+
     }
 ]);

@@ -1,9 +1,10 @@
 socialNetwork.controller("sidebarController",
-    ['$scope', 'friendsService', 'baseProfileImage', '$routeParams', 'notifyService', function($scope, friendsService, baseProfileImage, $routeParams, notifyService){
+    ['$scope', 'friendsService', 'baseProfileImage', '$routeParams', 'notifyService', '$location',
+        function($scope, friendsService, baseProfileImage, $routeParams, notifyService, $location){
         $scope.friends = [];
-        $scope.sidebarOwner = localStorage['username'];
+        $scope.sidebarOwnerUsername = $routeParams.username;
 
-        if(!$routeParams.username || $routeParams.username == $scope.sidebarOwner){
+        if(!$routeParams.username || $routeParams.username == sessionStorage['username']){
             friendsService.GetMyFriends()
                 .success(function (data) {
                     data.forEach(function(friend){
@@ -19,29 +20,18 @@ socialNetwork.controller("sidebarController",
                 });
         }
         else{
-            friendsService.getUserFullData($routeParams.username)
+            friendsService.GetUserFriends($routeParams.username)
                 .success(function (data) {
-                    if(data.isFriend){
-                        $scope.sidebarOwnerUsername = $routeParams.username;
-                        friendsService.GetUserFriends($scope.sidebarOwner)
-                            .success(function (data) {
-                                data.friends.forEach(function(friend){
-                                    if(friend.profileImageData == null){
-                                        friend.profileImageData = "data:image/jpg;base64," + baseProfileImage;
-                                    }
-                                });
+                    data.forEach(function(friend){
+                        if(!friend.profileImageData){
+                            friend.profileImageData = "data:image/jpg;base64," + baseProfileImage;
+                        }
+                    });
 
-                                $scope.friends = data.friends.slice(0,6);
-                            })
-                            .error(function (data) {
-                                notifyService.showError(data.error_description);
-                                $location.path('/');
-                            });
-                    }
-                    else{
-                        $scope.sidebarOwnerUsername = $routeParams.username;
-                        $scope.friendsSidebarVisible = false;
-                    }
+                    $scope.friendsToShow = data.slice(0,6);
+                })
+                .error(function (error) {
+                    alertify.error("Error, try again later");
                 });
         }
     }]);
