@@ -1,4 +1,5 @@
-<section class="newsFeed">
+<div>
+<section class="newsFeed" class="pull-left">
     <div class="panel panel-default" ng-repeat="post in newsFeedData | limitTo: 5">
         <div class="panel-heading">
             <img ng-src="{{post.author.profileImageData}}" alt="{{post.author.name}}" class="pull-left"/>
@@ -22,17 +23,18 @@
                         <span class="glyphicon glyphicon-question-sign"></span>
                     </div>
                     <div ng-if="post.author.gender == 1">
-                        <span class=" glyphicon glyphicons-male"></span>
+                        <span>♂</span>
                     </div>
                     <div ng-if="post.author.gender == 2">
-                        <span class="glyphicon glyphicon-female"></span>
+                        <span>♀</span>
                     </div>
                 </div>
-
-                <button type="submit" class="btn btn-primary pull-left" ng-if="post.author.hasPendingRequest && postData.author.username != user.username">Pending</button>
+                <div ng-if="post.author.username != user.username">
+                <button type="submit" class="btn btn-primary pull-left" ng-if="post.author.hasPendingRequest && post.author.username != user.username">Pending</button>
                 <button type="submit" class="btn btn-primary pull-left" ng-if="post.author.isFriend">Friend</button>
-                <button type="submit" class="btn btn-primary pull-left" ng-if="!post.author.hasPendingRequest && !postData.author.isFriend" ng-click="sendRequestUserNewsFeed(post.author.username)">Invite</button>
-            </div>
+                <button type="submit" class="btn btn-primary pull-left" ng-if="!post.author.hasPendingRequest && !post.author.isFriend" ng-click="sendRequestUserNewsFeed(post.author.username)">Invite</button>
+                </div>
+                </div>
             </div>
             <p>{{post.date | date: 'dd-MM-yyyy HH:MM:ss'}}</p>
         </div>
@@ -41,14 +43,15 @@
         </div>
         <div class="panel-footer">
             <div ng-if="post.author.username == user.username">
-                <button type="submit" class="btn btn-default pull-left" ng-if="post.author.username == user.username" ng-click="showEditPostPanel(post.id)">Edit Post</button>
+                <button type="submit" class="btn btn-default pull-left" ng-if="post.author.username == user.username" ng-click="showEditPost(post.id)">Edit Post</button>
                 <button type="submit" class="btn btn-default pull-left" ng-if="post.author.username == user.username" ng-click="deletePost(post.id)">Delete Post</button>
-                <button type="submit" class="btn btn-default pull-left" ng-click="showCommentAddPanel(post.id)">Comment</button>
             </div>
+            <button type="submit" class="btn btn-default pull-left" ng-click="showCommentAddPanel(post.id)">Comment</button>
+
             <div class="pull-right">
                 {{post.likesCount}}
-                <a class="glyphicon glyphicon-thumbs-up" ng-click="likePost(post.id)" ng-id="!post.liked">Like</a>
-                <a class="glyphicon glyphicon-thumbs-down" ng-click="unlikePost(post.id)" ng-id="post.liked">Unlike</a>
+                <a class="glyphicon glyphicon-thumbs-up" ng-click="likePost(post.id)" ng-if="!post.liked">Like</a>
+                <a class="glyphicon glyphicon-thumbs-down" ng-click="unlikePost(post.id)" ng-if="post.liked">Unlike</a>
             </div>
         </div>
         <div class="row commentsPanel pull-right cl-md-10" ng-if="post.totalCommentsCount > 0">
@@ -58,7 +61,7 @@
                 <h4>
                     <a href="" ng-mouseover="hoverCommentName = true">
                         <div>
-                            {{post.author.name}}
+                            {{comment.author.name}}
                         </div>
                     </a>
                 </h4>
@@ -75,7 +78,7 @@
                                 <span class="glyphicon glyphicon-question-sign"></span>
                             </div>
                             <div ng-if="comment.author.gender == 1">
-                                <span class=" glyphicon glyphicons-male"></span>
+                                <span class="glyphicon glyphicons-male"></span>
                             </div>
                             <div ng-if="comment.author.gender == 2">
                                 <span class="glyphicon glyphicon-female"></span>
@@ -91,7 +94,7 @@
                 <p>{{comment.date | date: 'dd-MM-yyyy HH:MM:ss'}}</p>
             </div>
             <div class="panel-body postContent">
-                {{comment.postContent}}
+                {{comment.commentContent}}
             </div>
             <div class="panel-footer">
                 <div>
@@ -100,8 +103,8 @@
                 </div>
                 <div class="pull-right">
                     {{comment.likesCount}}
-                    <a class="glyphicon glyphicon-thumbs-up" ng-click="likePost(comment.id)" ng-id="!post.liked">Like</a>
-                    <a class="glyphicon glyphicon-thumbs-down" ng-click="unlikePost(comment.id)" ng-id="post.liked">Unlike</a>
+                    <a class="glyphicon glyphicon-thumbs-up" ng-click="likeComment(post.id, comment.id)" ng-if="!comment.liked">Like</a>
+                    <a class="glyphicon glyphicon-thumbs-down" ng-click="unlikeComment(post.id, comment.id)" ng-if="comment.liked">Unlike</a>
                 </div>
             </div>
         </div>
@@ -113,4 +116,10 @@
             </div>
         </div>
     </div>
+
+    <add-comment></add-comment>
+    <edit-comment></edit-comment>
+    <edit-post></edit-post>
 </section>
+<div friends-sidebar class="pull-right"></div>
+    </div>

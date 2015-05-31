@@ -61,27 +61,27 @@
     padding-bottom: 5px;
 }
 
-.friends-sidebar{
+.friendsSidebar{
     padding: 10px 25px;
 }
 
-.friends-sidebar>p{
+.friendsSidebar>p{
     margin-bottom: 20px;
     border-bottom: 1px solid lightgrey;
 }
 
-.friends-sidebar img{
+.friendsSidebar img{
     width: 100%;
     max-height: 90px;
 }
 
-.friends-sidebar>div>div>a>p{
+.friendsSidebar>div>div>a>p{
     font-size: 18px;
     text-align: center;
     color: black;
 }
 
-.friends-sidebar>div>div {
+.friendsSidebar>div>div {
     height:150px;
 }
 
@@ -135,6 +135,9 @@
 .friendsSidebar{
     width: 400px;
 }
+.newsFeed{
+    width: 60%;
+}
 .newsFeed>.panel-default{
     display: inline-block;
     width: 100%;
@@ -165,7 +168,7 @@
     margin-right:10px;
 }
 
-.newsFeed  .panel-footer{
+.newsFeed .panel-footer{
     height: 55px;
 }
 
@@ -200,7 +203,7 @@
     color: black;
 }
 
-.newsFfeed .panel .panel-heading .hoverPanel span{
+.newsFeed .panel .panel-heading .hoverPanel span{
     line-height: 24px;
 }
 
@@ -208,16 +211,16 @@
     width:250px;
 }
 
-.newsFfeed .comments-panel{
+.newsFeed .comments-panel{
     margin-top:20px;
     margin-right:10px;
 }
 
-.newsFfeed .comments-panel .panel-heading{
+.newsFeed .comments-panel .panel-heading{
     height:60px;
 }
 
-.newsFfeed .comments-panel .panel-heading img{
+.newsFeed .comments-panel .panel-heading img{
     width:100px;
     height:100px;
     margin-right:20px;
@@ -291,4 +294,16 @@
     height: 32px;
     overflow: hidden;
     word-wrap: break-word;
+}
+.editPostModal, .addCommentModal, .editCommentModal{
+    width: 500px;
+    margin: 150px auto;
+}
+
+.editPostModal textarea, .addCommentModal .modal-body textarea, .editCommentModal .modal-body textarea{
+    margin: 0 10px;
+    width: 480px;
+    max-width: 480px;
+    height: 150px;
+    max-height: 250px;
 }

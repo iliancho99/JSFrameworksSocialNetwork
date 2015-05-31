@@ -19,10 +19,10 @@ socialNetwork.controller("newsFeedController", ['$scope', 'postService', 'notify
                 if(post.id == postId){
                     if(post.author.isFriend ||
                         post.wallOwner.isFriend ||
-                        post.author.username == $localStorage['username'] ||
-                        post.wallOwner.username ==$localStorage['username']){
+                        post.author.username == sessionStorage['username'] ||
+                        post.wallOwner.username == sessionStorage['username']){
                         postService.likePost(postId)
-                            .seccess(function(data) {
+                            .success(function(data) {
                                 post.liked = true;
                                 post.likesCount = post.likesCount + 1;
                             })
@@ -43,7 +43,7 @@ socialNetwork.controller("newsFeedController", ['$scope', 'postService', 'notify
                     if(post.author.isFriend ||
                         post.wallOwner.isFriend ||
                         post.author.username == sessionStorage['username'] ||
-                        post.wallOwner.username ==sessionStorage['username']) {
+                        post.wallOwner.username == sessionStorage['username']) {
                         postService.unlikePost(postId)
                             .success(function(data) {
                                 $scope.newsFeedData.forEach(function(post){
@@ -181,7 +181,7 @@ socialNetwork.controller("newsFeedController", ['$scope', 'postService', 'notify
                         post.comments.forEach(function(comment){
                             if(comment.id == commentId){
                                 postService.unlikeComment(postId, commentId)
-                                    (function() {
+                                    .success(function() {
                                         comment.liked = false;
                                         comment.likesCount -= 1;
 
@@ -282,7 +282,7 @@ socialNetwork.controller("newsFeedController", ['$scope', 'postService', 'notify
             return true;
         };
         if(!$routeParams.username){
-            $scope.postsOwner = localStorage['username'];
+            $scope.postsOwner = sessionStorage['username'];
             postService.getNewsFeed($scope.postsStartId)
                 .success(function(data) {
                     data.forEach(function(post){
@@ -311,24 +311,24 @@ socialNetwork.controller("newsFeedController", ['$scope', 'postService', 'notify
             $scope.postsOwner = $routeParams.username;
             postService.getUserWall($scope.postsStartId, $scope.postsOwner)
                 .success(function(data) {
-                    data.forEach(function(post){
-                        if(post.author.profileImageData == null){
-                            post.author.profileImageData = "data:image/jpg;base64," + baseProfileImage;
-                        }
-
-                        if(post.wallOwner.profileImageData == null){
-                            post.wallOwner.profileImageData = "data:image/jpg;base64," + baseProfileImage;
-                        }
-
-                        post.comments.forEach(function(comment){
-                            if(comment.author.profileImageData == null){
-                                comment.author.profileImageData = "data:image/jpg;base64," + baseProfileImage;
+                        data.forEach(function(post){
+                            if(post.author.profileImageData == null){
+                                post.author.profileImageData = "data:image/jpg;base64," + baseProfileImage;
                             }
-                        });
 
-                        $scope.newsFeedData.push(post);
-                    });
-                })
+                            if(post.wallOwner.profileImageData == null){
+                                post.wallOwner.profileImageData = "data:image/jpg;base64," + baseProfileImage;
+                            }
+
+                            post.comments.forEach(function(comment){
+                                if(comment.author.profileImageData == null){
+                                    comment.author.profileImageData = "data:image/jpg;base64," + baseProfileImage;
+                                }
+                            });
+
+                            $scope.newsFeedData.push(post);
+                        });
+                    })
             .error(function () {
                     notifyService.showError('Server Error! Try Again!');
                 });

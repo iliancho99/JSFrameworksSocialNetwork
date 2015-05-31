@@ -63,7 +63,7 @@ socialNetwork.controller("wallController", ['$scope','userService', 'friendsServ
             postService.addPost(text, $scope.userWall.username)
                 .success(function (data) {
                     notifyService.showInfo("The post posted successfully")
-                    $scope.newsFeedData.ushift(data);
+                    $scope.newsFeedData.unshift(data);
                 })
                 .error(function (data) {
                     notifyService.showError(data.error_description);

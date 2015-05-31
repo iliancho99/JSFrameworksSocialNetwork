@@ -18,7 +18,7 @@
             <div class="sendMessage" ng-controller="newsFeedController">
                 <form class="form-horizontal">
                     <fieldset>
-                        <legent>Add Post</legent>
+                        <legend>Add Post</legend>
                         <div class="form-group">
                             <div class="col-md-10">
                                 <textarea class="form-control" rows="3" id="textArea" ng-model="postText"></textarea>
@@ -32,6 +32,7 @@
                     </fieldset>
                 </form>
             </div>
+            <div friendsSidebar ng-controller="sidebarController"></div>
         </div>
         <div news-feed></div>
     </div>

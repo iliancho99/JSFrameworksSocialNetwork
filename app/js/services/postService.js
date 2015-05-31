@@ -34,7 +34,7 @@ socialNetwork.factory('postService', ['$http', 'authentication','baseServiceUrl'
     function DeletePost(postId){
         var headers = authentication.getHeaders();
         return $http({
-            url: baseServiceUrl + '/posts',
+            url: baseServiceUrl + 'Posts/' + postId,
             method: 'DELETE',
             headers: headers
         });
@@ -53,7 +53,7 @@ socialNetwork.factory('postService', ['$http', 'authentication','baseServiceUrl'
         var headers = authentication.getHeaders();
         return $http({
             url: baseServiceUrl + 'posts/' + postId + '/comments/' + commentId + '/likes',
-            method: 'GET',
+            method: 'POST',
             headers: headers
         });
     }
@@ -76,6 +76,18 @@ socialNetwork.factory('postService', ['$http', 'authentication','baseServiceUrl'
         });
     }
 
+    function EditComment(postId, commentId, text){
+        var headers = authentication.getHeaders();
+        return $http({
+            url: baseServiceUrl + 'posts/' + postId + '/comments/' + commentId,
+            method: 'PUT',
+            headers: headers,
+            data : {
+                commentContent: text
+            }
+        });
+    }
+
     function GetNewsFeed(startId){
         var headers = authentication.getHeaders();
         return $http({
@@ -94,6 +106,30 @@ socialNetwork.factory('postService', ['$http', 'authentication','baseServiceUrl'
         });
     }
 
+    function EditPost(postId, text){
+        var headers = authentication.getHeaders();
+        return $http({
+            url: baseServiceUrl + 'posts/' + postId,
+            method: 'PUT',
+            headers: headers,
+            data: {
+                postContent: text
+            }
+        });
+    }
+
+    function AddComment(postId, text){
+        var headers = authentication.getHeaders();
+        return $http({
+            url: baseServiceUrl + 'posts/' + postId + '/comments',
+            method: 'POST',
+            headers: headers,
+            data: {
+                commentContent: text
+            }
+        });
+    }
+
     return {
         addPost: AddPost,
         likePost: LikePost,
@@ -104,7 +140,9 @@ socialNetwork.factory('postService', ['$http', 'authentication','baseServiceUrl'
         unlikeComment: UnlikeComment,
         deleteComment: DeleteComment,
         getNewsFeed: GetNewsFeed,
-        getUserWall: GetUserWall
-
+        getUserWall: GetUserWall,
+        editComment: EditComment,
+        editPost: EditPost,
+        addComment: AddComment
     }
 }]);

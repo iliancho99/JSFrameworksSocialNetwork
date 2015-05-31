@@ -5,7 +5,6 @@
     <title>Social Network</title>
     <link rel="stylesheet" href="css/bootstrap-3.3.4/dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="css/app.css"/>
-    <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body ng-app="SocialNetwork">
 
@@ -17,8 +16,15 @@
 <script src="js/lib/jquery-2.1.1.js"></script>
 <script src="js/lib/jquery.noty.js"></script>
 <script src="js/lib/bootstrap.js"></script>
+<script src="js/lib/dropdown-toggle.js"></script>
 
 <script src="js/app.js"></script>
+
+<script src="js/services/authentication.js"></script>
+<script src="js/services/userService.js"></script>
+<script src="js/services/friendsService.js"></script>
+<script src="js/services/notifyService.js"></script>
+<script src="js/services/postService.js"></script>
 
 <script src="js/directives/login.js"></script>
 <script src="js/directives/register.js"></script>
@@ -26,12 +32,9 @@
 <script src="js/directives/friendsRequestsList.js"></script>
 <script src="js/directives/friendsSidebar.js"></script>
 <script src="js/directives/newsFeed.js"></script>
-
-<script src="js/services/authentication.js"></script>
-<script src="js/services/userService.js"></script>
-<script src="js/services/friendsService.js"></script>
-<script src="js/services/notifyService.js"></script>
-<script src="js/services/postService.js"></script>
+<script src="js/directives/addComment.js"></script>
+<script src="js/directives/editComment.js"></script>
+<script src="js/directives/editPost.js"></script>
 
 <script src="js/controllers/loginController.js"></script>
 <script src="js/controllers/registerController.js"></script>
@@ -45,6 +48,9 @@
 <script src="js/controllers/sidebarController.js"></script>
 <script src="js/controllers/wallController.js"></script>
 <script src="js/controllers/allFriendsController.js"></script>
+<script src="js/controllers/EditCommentController.js"></script>
+<script src="js/controllers/EditPostController.js"></script>
+<script src="js/controllers/AddCommentController.js"></script>
 
 <script src="partials/login.html"></script>
 <script src="partials/register.html"></script>
@@ -56,6 +62,9 @@
 <script src="partials/sidebarFriends.html"></script>
 <script src="partials/wall.html"></script>
 <script src="partials/newsFeed.html"></script>
+<script src="partials/addComment.html"></script>
+<script src="partials/editComment.html"></script>
+<script src="partials/editPost.html"></script>
 
 
 </body>
