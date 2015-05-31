@@ -126,7 +126,7 @@ socialNetwork.controller("newsFeedController", ['$scope', 'postService', 'notify
             $scope.newsFeedData.forEach(function(post){
                 if(post.id == postId){
                    postService.getPostComments(postId)
-                        (function(data) {
+                        .success(function(data) {
                             post.comments = data;
                         })
                         .error(function () {
