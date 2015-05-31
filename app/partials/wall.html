@@ -6,7 +6,7 @@
             <div>
                 <h3>{{userWall.name}}</h3>
                 <button type="button" class="btn btn-primary btn-lg" ng-if="!hasStatus" ng-hide="isLoggedUser">{{userStatus}}</button>
-                <button type="button" class="btn btn-primary btn-lg" ng-click="sendRequestUser(wallData.username)" ng-if="hasStatus" ng-hide="isLoggedUser">{{userStatus}}</button>
+                <button type="button" class="btn btn-primary btn-lg" ng-click="sendRequestUser(userWall.username)" ng-if="hasStatus" ng-hide="isLoggedUser">{{userStatus}}</button>
             </div>
         </div>
         <img class="coverImage" ng-src="{{userWall.coverImageData}}" alt="Cover Image">
@@ -32,7 +32,7 @@
                     </fieldset>
                 </form>
             </div>
-            <div friends-sidebar ng-controller="sidebarController"></div>
         </div>
+        <div news-feed></div>
     </div>
 </section>

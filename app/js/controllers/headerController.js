@@ -1,5 +1,5 @@
-socialNetwork.controller('HeaderController', ['$scope','friendsService', 'userService',
-    function ($scope, friendsService, userService) {
+socialNetwork.controller('HeaderController', ['$scope','friendsService', 'userService', 'baseProfileImage', 'baseCoverImage', 'notifyService',
+    function ($scope, friendsService, userService, baseProfileImage, baseCoverImage, notifyService) {
         var user = {};
 
         $scope.showRequestDetails = function () {
@@ -24,8 +24,17 @@ socialNetwork.controller('HeaderController', ['$scope','friendsService', 'userSe
                 }
 
                 user.username = data.username;
-                user.profileImageData = data.profileImageData;
-                user.coverImageData = data.coverImageData;
+                if(!data.profileImageData){
+                    user.profileImageData = "data:image/jpg;base64," + baseProfileImage;
+                } else {
+                    user.profileImageData = data.profileImageData;
+                }
+
+                if(!data.coverImageData){
+                    user.coverImageData =  "data:image/jpg;base64," + baseCoverImage;
+                } else {
+                    user.coverImageData =   data.coverImageData;
+                }
                 user.name = data.name;
                 user.id = data.id;
                 user.email = data.email;
@@ -34,7 +43,7 @@ socialNetwork.controller('HeaderController', ['$scope','friendsService', 'userSe
                 $scope.user = user;
             })
             .error(function (data) {
-
+                notifyService.showError("Error, try again later!");
             });
 
 }]);

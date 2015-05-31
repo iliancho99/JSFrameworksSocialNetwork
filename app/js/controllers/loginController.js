@@ -17,18 +17,17 @@ socialNetwork.controller("LoginController", ['$scope','userService', 'authentica
                             sessionStorage['username'] = data.username;
 
                             if(!data.profileImageData){
-                                sessionStorage['profileImageData'] = baseProfileImage;
+                                sessionStorage['profileImageData'] = "data:image/jpg;base64," +   baseProfileImage;
                             } else {
                                 sessionStorage['profileImageData'] = data.profileImageData;
                             }
 
                             if(!data.coverImageData){
-                                sessionStorage['coverImageData'] = baseCoverImage;
+                                sessionStorage['coverImageData'] =  "data:image/jpg;base64," + baseCoverImage;
                             } else {
-                                sessionStorage['coverImageData'] = data.coverImageData;
+                                sessionStorage['coverImageData'] =   data.coverImageData;
                             }
 
-                            sessionStorage['coverImageData'] = data.coverImageData;
                             sessionStorage['name'] = data.name;
                             sessionStorage['id'] = data.id;
                             sessionStorage['email'] = data.email;

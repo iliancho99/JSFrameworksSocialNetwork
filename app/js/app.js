@@ -32,6 +32,10 @@ if(!sessionStorage["access_token"]){
                 templateUrl: "partials/wall.html",
                 controller: "wallController"
             })
+            .when('/users/:username/friends', {
+                templateUrl: "partials/allUserFriends.html",
+                controller: "allFriendsController"
+            })
             .otherwise({
                 redirectTo: "/"
             })

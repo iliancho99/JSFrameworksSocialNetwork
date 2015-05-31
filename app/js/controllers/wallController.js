@@ -60,10 +60,10 @@ socialNetwork.controller("wallController", ['$scope','userService', 'friendsServ
             if(text == ''){
                 notifyService.showError("The text can not be empty")
             }
-            postService.AddPost(text, $scope.userWall.username)
+            postService.addPost(text, $scope.userWall.username)
                 .success(function (data) {
                     notifyService.showInfo("The post posted successfully")
-                    $scope.newsFeedUserData.ushift(data);
+                    $scope.newsFeedData.ushift(data);
                 })
                 .error(function (data) {
                     notifyService.showError(data.error_description);

@@ -1,4 +1,5 @@
-socialNetwork.controller("RegisterController", ['$scope', 'userService', 'authentication', function ($scope, userService, authentication) {
+socialNetwork.controller("RegisterController", ['$scope', 'userService', 'authentication', 'notifyService',
+    function ($scope, userService, authentication, notifyService) {
     $scope.registerUser = function (user) {
         if(user.gender == 'male'){
             user.gender = 1
@@ -32,12 +33,12 @@ socialNetwork.controller("RegisterController", ['$scope', 'userService', 'authen
                         window.location.reload();
                     })
                     .error(function (data) {
-                        alertify.error(data.error_description);
+                        notifyService.showError(data.error_description);
                     });
             })
             .error(
             function (data) {
-                alertify.error(data.error_description);
+                notifyService.showError(data.error_description);
             }
         );
     }

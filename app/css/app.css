@@ -132,3 +132,163 @@
 .friendsSidebar img{
     height: 80px;
 }
+.friendsSidebar{
+    width: 400px;
+}
+.newsFeed>.panel-default{
+    display: inline-block;
+    width: 100%;
+}
+
+.newsFeed>.panel>.panel-heading{
+    height: 70px;
+    position: relative;
+}
+
+.newsFeed>.panel>.panel-heading img{
+    width:50px;
+    height:50px;
+    margin-right:20px;
+    margin-bottom:10px;
+}
+
+.newsFeed>.panel>.panel-heading h4{
+    margin-bottom: 0;
+}
+
+.newsFeed .panel .panel-heading h4 a{
+    text-decoration: none;
+    color:black;
+}
+
+.newsFeed>.panel>.panel-footer>.likes-panel{
+    margin-right:10px;
+}
+
+.newsFeed  .panel-footer{
+    height: 55px;
+}
+
+.newsFeed  .panel-footer>div{
+    line-height: 35px;
+}
+
+.newsFeed  .panel-footer button{
+    margin-right:10px;
+}
+
+.hoverPanel{
+    width:400px;
+    height:105px;
+    position:absolute;
+}
+
+.newsFeed .panel .panel-heading .hoverPanel img{
+    width: 75px;
+    height: 75px;
+    float:left;
+}
+
+.newsFeed .panel .panel-heading .hoverPanel h5{
+    font-size: 18px;
+    float:left;
+    margin-top:5px;
+    margin-right:5px;
+}
+
+.newsFeed .panel .panel-heading .hoverPanel h5 a{
+    color: black;
+}
+
+.newsFfeed .panel .panel-heading .hoverPanel span{
+    line-height: 24px;
+}
+
+.hoverPanelInfo{
+    width:250px;
+}
+
+.newsFfeed .comments-panel{
+    margin-top:20px;
+    margin-right:10px;
+}
+
+.newsFfeed .comments-panel .panel-heading{
+    height:60px;
+}
+
+.newsFfeed .comments-panel .panel-heading img{
+    width:100px;
+    height:100px;
+    margin-right:20px;
+    margin-bottom:20px;
+}
+
+.newsFeed .comments-panel .panel-heading h4{
+    float: left;
+    margin-right:20px;
+}
+
+.newsFeed .comments-panel .panel-heading p{
+    line-height: 40px;
+}
+
+.newsFeed .more-btn{
+    margin-bottom: 10px;
+}
+
+.editPostModal, .addCommentModal, .editCommentModal{
+    width: 500px;
+    margin: 150px auto;
+}
+
+.editPostModal textarea, .addCommentModal .modal-body textarea, .editCommentModal .modal-body textarea{
+    margin: 0 10px;
+    width: 480px;
+    max-width: 480px;
+    height: 150px;
+    max-height: 250px;
+}
+
+.addCommentModal h5{
+    float: left;
+}
+
+.addCommentModal .modal-body div p{
+    line-height: 35px;
+}
+
+.addCommentModal .modal-body .panel{
+    margin-left:10px;
+    margin-right:10px;
+}
+
+.newsFeed .panel-heading h4 a div{
+    overflow: hidden;
+    height: 19px;
+    word-wrap: break-word;
+}
+
+.hoverPanelInfo h5 a div, .comments-panel h5 a div{
+    overflow: hidden;
+    height: 19px;
+    width:200px;
+    word-wrap: break-word;
+}
+
+.comments-panel h4 a div{
+    overflow: hidden;
+    height: 19px;
+    width: 185px;
+    word-wrap: break-word;
+}
+
+.post-content, .comment-content {
+    word-wrap: break-word;
+}
+
+.wall-user-info>div>h3{
+    height: 32px;
+    overflow: hidden;
+    word-wrap: break-word;
+}

@@ -1,5 +1,5 @@
-socialNetwork.controller("EditUserController", ['$scope','userService', '$location',
-    function ($scope, userService, $location) {
+socialNetwork.controller("EditUserController", ['$scope','userService', '$location', 'notifyService',
+    function ($scope, userService, $location, notifyService) {
 
         $scope.editUserData = {
             'profileImageData': sessionStorage['profileImageData'],
@@ -24,10 +24,10 @@ socialNetwork.controller("EditUserController", ['$scope','userService', '$locati
             var user = {};
 
             if(userEditData.name == ''){
-                alertify.error('Name can\'t be empty!');
+                notifyService.showError('Name can\'t be empty!');
             }
             else if(userEditData.email == ''){
-                alertify.error('Email can\'t be empty!');
+                notifyService.showError('Email can\'t be empty!');
             } else{
 
                 if(userEditData.profileImageData){
@@ -50,10 +50,10 @@ socialNetwork.controller("EditUserController", ['$scope','userService', '$locati
 
                 userService.editProfile(user)
                     .success(function (data) {
-                        alertify.success('Profile Edited Successfully!');
+                        notifyService.showInfo('Profile Edited Successfully!');
                         $location.path('/')})
                     .error(function(error){
-                        alertify.error('Profile Edit Failed! Try again!');
+                        notifyService.showError('Profile Edit Failed! Try again!');
                     });
             }
         }

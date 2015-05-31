@@ -12,7 +12,6 @@ socialNetwork.controller("LogoutController", ['$scope','userService', 'authentic
                 delete sessionStorage['email'];
                 delete sessionStorage['gender'];
                 delete sessionStorage['genderNum'];
-                window.location.reload();
                 $location.path('/');
                 window.location.reload();
             })
